@@ -2,7 +2,13 @@
 
 A simple rails web app that enables user to add a personal collection of favourite youtube videos. It's a like a Pinterest for YouTube videos.
 
-## Specifications:
+This application is designed to gauge our applicant's:
+- adherence to best practices
+- familiarity with code patterns
+- ability to write tests and documentation, and
+- command of Ruby and Rails as a whole
+
+## App Specifications:
  1. Can add/delete a YouTube video in in your collection using a YouTube link.
  2. Can create/edit/delete different boards to group your collection. One video may belong to different boards.
  3. Can fetch YouTube video metadata, like title, description, and tags using YouTube API.
