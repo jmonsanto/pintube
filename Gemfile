@@ -5,7 +5,12 @@ gem 'rails', '3.2.17'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'mysql2'
+gem 'httparty'
+gem 'figaro'
+
+gem 'twitter-bootstrap-rails'
+gem 'font-awesome-rails'
 
 
 # Gems used only for assets and not required
@@ -34,5 +39,9 @@ gem 'jquery-rails'
 # Deploy with Capistrano
 # gem 'capistrano'
 
-# To use debugger
-# gem 'debugger'
+group :development, :test do
+  gem 'better_errors', '~> 2.0'
+  gem 'rails-footnotes', '>= 3.7.9'
+  gem 'quiet_assets'
+  gem 'pry-byebug'
+end
