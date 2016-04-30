@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :board do
-    name "MyString"
-    description "MyString"
+    name { FFaker::Education.major }
+    description { FFaker::HipsterIpsum.sentence }
   end
 end
