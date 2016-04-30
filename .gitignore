@@ -13,3 +13,13 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore app specific configurations
+config/database.yml
+config/application.yml
+
+# Rspec
+.rspec
+
+# Ignore byebug command history file
+.byebug_history
