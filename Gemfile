@@ -13,7 +13,6 @@ gem 'active_model_serializers'
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
 
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -49,4 +48,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
   gem 'ffaker'
+end
+
+group :doc do
+  gem 'sdoc', require: false
 end
