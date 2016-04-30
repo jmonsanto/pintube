@@ -8,6 +8,7 @@ gem 'rails', '3.2.17'
 gem 'mysql2', '0.3.14'
 gem 'httparty'
 gem 'figaro'
+gem 'active_model_serializers'
 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
@@ -44,4 +45,8 @@ group :development, :test do
   gem 'rails-footnotes', '>= 3.7.9'
   gem 'quiet_assets'
   gem 'pry-byebug'
+  gem 'test-unit'
+  gem 'rspec-rails', '~> 2.14'
+  gem 'factory_girl_rails'
+  gem 'ffaker'
 end
