@@ -8,12 +8,12 @@ describe ApiConstraints do
     it 'returns true when the version matches the Accept header' do 
       request = double(host: 'pintube.dev',
                        headers: { 'Accept' => 'application/vnd.pintube.v1' })
-      api_constraints_v1.matches?(request).should be_true
+      api_constraints_v1.matches?(request).should be_truthy
     end
 
     it 'returns default version if default option is specified' do 
       request = double(host: 'pintube.dev')
-      api_constraints_v2.matches?(request).should be_true
+      api_constraints_v2.matches?(request).should be_truthy
     end
   end
 end
