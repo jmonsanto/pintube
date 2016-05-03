@@ -15,6 +15,16 @@ class Api::V1::BoardsController < ApplicationController
     end
   end
 
+  def update
+    board = Board.find(params[:id])
+
+    if board.update_attributes(board_params)
+      render json: board, status: 200, location: [:api, board]
+    else
+      render json: { errors: board.errors }, status: 422
+    end
+  end
+
   private
 
   def board_params

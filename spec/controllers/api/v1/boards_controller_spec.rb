@@ -51,4 +51,41 @@ describe Api::V1::BoardsController do
       it { should respond_with 422 }
     end
   end
+
+  describe 'PUT/PATCH #update' do
+    context 'when is successfully updated' do
+      before(:each) do
+        @board = FactoryGirl.create :board
+        put :update, { id: @board.id,
+                         board: { name: "Psychedelic Madness" } }, format: :json 
+      end
+
+      it 'returns the JSON representation of the updated board' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response[:name]).to eql 'Psychedelic Madness'
+      end
+
+      it { should respond_with 200 }
+    end
+
+    context 'when it is not successfully updated' do
+      before(:each) do
+        @board = FactoryGirl.create :board
+        put :update, { id: @board.id,
+                         board: { name: '' } }, format: :json
+      end
+
+      it 'returns an error' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response).to have_key(:errors)
+      end
+
+      it 'returns the JSON error why the board cannot be updated' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response[:errors][:name]).to include 'can\'t be blank'
+      end
+
+      it { should respond_with 422 }
+    end
+  end
 end
