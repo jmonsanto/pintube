@@ -16,4 +16,39 @@ describe Api::V1::BoardsController do
 
     it { should respond_with 200 }
   end
+
+  describe 'POST #create' do
+    context 'when a board is successfully created' do
+      before(:each) do
+        @board_attributes = FactoryGirl.attributes_for :board
+        post :create, { board: @board_attributes }, format: :json
+      end
+
+      it 'returns the JSON representation of the newly created board' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response[:name]).to eql @board_attributes[:name]
+      end
+
+      it { should respond_with 201 }
+    end
+
+    context 'when a board is unsuccessfully created' do
+      before(:each) do
+        @invalid_board_attributes = { description: 'Hipsters ipsum wada wada' }
+        post :create, { board: @invalid_board_attributes }, format: :json
+      end
+
+      it 'renders an error' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response).to have_key(:errors)
+      end
+
+      it 'returns the JSON error on why the board could not be created' do
+        board_response = JSON.parse(response.body, symbolize_names: true)
+        expect(board_response[:errors][:name]).to include 'can\'t be blank'
+      end
+
+      it { should respond_with 422 }
+    end
+  end
 end
