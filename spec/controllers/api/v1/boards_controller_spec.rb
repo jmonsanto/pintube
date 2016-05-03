@@ -88,4 +88,13 @@ describe Api::V1::BoardsController do
       it { should respond_with 422 }
     end
   end
+
+  describe 'DELETE #destroy' do
+    before(:each) do
+      @board = FactoryGirl.create :board
+      delete :destroy, { id: @board.id }, format: :json
+    end
+
+    it { should respond_with 200 }
+  end
 end

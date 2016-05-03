@@ -25,6 +25,12 @@ class Api::V1::BoardsController < ApplicationController
     end
   end
 
+  def destroy
+    board = Board.find(params[:id])
+    board.destroy
+    head 200
+  end
+
   private
 
   def board_params
