@@ -9,6 +9,7 @@ gem 'mysql2', '0.3.14'
 gem 'httparty'
 gem 'figaro'
 gem 'active_model_serializers'
+gem 'strong_parameters', '0.2.0'
 
 gem 'twitter-bootstrap-rails'
 gem 'font-awesome-rails'
