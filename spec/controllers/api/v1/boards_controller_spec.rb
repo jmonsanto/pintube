@@ -1,12 +1,11 @@
 require 'spec_helper'
 
 describe Api::V1::BoardsController do
-  before(:each) { request.headers['Accept'] = 'application/vnd.pintube.v1' }
 
   describe 'GET #show' do
     before(:each) do
       @board = FactoryGirl.create(:board)
-      get :show, id: @board.id, format: :json
+      get :show, id: @board.id
     end
 
     it 'returns the information of a specific board on a hash' do
@@ -21,7 +20,7 @@ describe Api::V1::BoardsController do
     context 'when a board is successfully created' do
       before(:each) do
         @board_attributes = FactoryGirl.attributes_for :board
-        post :create, { board: @board_attributes }, format: :json
+        post :create, { board: @board_attributes }
       end
 
       it 'returns the JSON representation of the newly created board' do
@@ -35,7 +34,7 @@ describe Api::V1::BoardsController do
     context 'when a board is unsuccessfully created' do
       before(:each) do
         @invalid_board_attributes = { description: 'Hipsters ipsum wada wada' }
-        post :create, { board: @invalid_board_attributes }, format: :json
+        post :create, { board: @invalid_board_attributes }
       end
 
       it 'renders an error' do
@@ -57,7 +56,7 @@ describe Api::V1::BoardsController do
       before(:each) do
         @board = FactoryGirl.create :board
         put :update, { id: @board.id,
-                         board: { name: "Psychedelic Madness" } }, format: :json 
+                         board: { name: "Psychedelic Madness" } }
       end
 
       it 'returns the JSON representation of the updated board' do
@@ -72,7 +71,7 @@ describe Api::V1::BoardsController do
       before(:each) do
         @board = FactoryGirl.create :board
         put :update, { id: @board.id,
-                         board: { name: '' } }, format: :json
+                         board: { name: '' } }
       end
 
       it 'returns an error' do
@@ -92,7 +91,7 @@ describe Api::V1::BoardsController do
   describe 'DELETE #destroy' do
     before(:each) do
       @board = FactoryGirl.create :board
-      delete :destroy, { id: @board.id }, format: :json
+      delete :destroy, { id: @board.id }
     end
 
     it { should respond_with 200 }
