@@ -10,7 +10,7 @@ describe Api::V1::BoardsController do
     end
 
     it 'returns the information of a specific board on a hash' do
-      board_response = JSON.parse(response.body, symbolize_names: true)
+      board_response = json_response
       expect(board_response[:name]).to eql @board.name
     end
 
@@ -25,7 +25,7 @@ describe Api::V1::BoardsController do
       end
 
       it 'returns the JSON representation of the newly created board' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response[:name]).to eql @board_attributes[:name]
       end
 
@@ -39,12 +39,12 @@ describe Api::V1::BoardsController do
       end
 
       it 'renders an error' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response).to have_key(:errors)
       end
 
       it 'returns the JSON error on why the board could not be created' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response[:errors][:name]).to include 'can\'t be blank'
       end
 
@@ -61,7 +61,7 @@ describe Api::V1::BoardsController do
       end
 
       it 'returns the JSON representation of the updated board' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response[:name]).to eql 'Psychedelic Madness'
       end
 
@@ -76,12 +76,12 @@ describe Api::V1::BoardsController do
       end
 
       it 'returns an error' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response).to have_key(:errors)
       end
 
       it 'returns the JSON error why the board cannot be updated' do
-        board_response = JSON.parse(response.body, symbolize_names: true)
+        board_response = json_response
         expect(board_response[:errors][:name]).to include 'can\'t be blank'
       end
 
