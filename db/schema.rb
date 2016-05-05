@@ -11,13 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20160430181007) do
+ActiveRecord::Schema.define(:version => 20160505120604) do
 
   create_table "boards", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "description", :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "videos", :force => true do |t|
+    t.string   "identifier",    :null => false
+    t.datetime "published_at",  :null => false
+    t.string   "channel_id",    :null => false
+    t.string   "title",         :null => false
+    t.text     "description",   :null => false
+    t.string   "thumbnail",     :null => false
+    t.string   "channel_title", :null => false
+    t.string   "category_id",   :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
 end
