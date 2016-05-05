@@ -24,6 +24,8 @@ describe Video do
   it { should validate_presence_of :category_id }
 
   it { should have_many(:tags) }
+  it { should have_many(:board_videos) }
+  it { should have_many(:boards).through(:board_videos) }
 
   describe '#tags association' do
     before do

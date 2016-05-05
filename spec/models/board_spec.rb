@@ -15,5 +15,8 @@ describe Board do
     it { should validate_presence_of(:name) }
     it { should validate_presence_of(:description) }
     it { should validate_uniqueness_of(:name) }
+
+    it { should have_many(:board_videos) }
+    it { should have_many(:videos).through(:board_videos) }
   end
 end
