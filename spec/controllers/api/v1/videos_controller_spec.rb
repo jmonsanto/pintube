@@ -21,7 +21,7 @@ describe Api::V1::VideosController do
     end
 
     it 'returns 5 records from the database' do
-      expect(json_response[:videos]).to have(5).items
+      expect(json_response[:videos].size).to eq(5)
     end
 
     it { should respond_with 200 }
