@@ -9,6 +9,7 @@ Pintube::Application.routes.draw do
       constraints: ApiConstraints.new(version: 1, default: true) do
 
       resources :boards, only: [ :show, :create, :update, :destroy ]
+      resources :videos, only: [ :show, :index ]
     end
   end
 end
