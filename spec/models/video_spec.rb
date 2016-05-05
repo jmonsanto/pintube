@@ -1,8 +1,8 @@
 require 'spec_helper'
 
 describe Video do
-  let(:video) { FactoryGirl.build :video }
-  subject { video }
+  before { @video = FactoryGirl.build :video }
+  subject { @video }
 
   it { should respond_to(:identifier) }
   it { should respond_to(:published_at) }
@@ -22,4 +22,21 @@ describe Video do
   it { should validate_presence_of :thumbnail }
   it { should validate_presence_of :channel_title }
   it { should validate_presence_of :category_id }
+
+  it { should have_many(:tags) }
+
+  describe '#tags association' do
+    before do
+      @video.save
+      3.times { FactoryGirl.create :tag, video: @video }
+    end
+
+    it 'destroys the associated tags when nuking videos' do
+      tags = @video.tags
+      @video.destroy
+      tags.each do |tag|
+        expect(Tag.find(tag)).to raise_error ActiveRecord::RecordNotFound
+      end
+    end
+  end
 end

@@ -8,4 +8,6 @@ class Video < ActiveRecord::Base
             :channel_title,
             :category_id, presence: true
   validates :identifier, uniqueness: true
+
+  has_many :tags, dependent: :destroy
 end
