@@ -70,6 +70,6 @@ module Pintube
       g.helper = false
     end
 
-    config.autoload_paths += %W(\#{config.root}/lib)
+    config.autoload_paths += Dir["#{config.root}/lib"]
   end
 end
