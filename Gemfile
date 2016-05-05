@@ -48,7 +48,7 @@ group :development, :test do
   gem 'test-unit'
   gem 'rspec-rails', '~> 2.14'
   gem 'factory_girl_rails'
-  gem 'ffaker'
+  gem 'faker'
   gem 'shoulda-matchers'
 end
 
