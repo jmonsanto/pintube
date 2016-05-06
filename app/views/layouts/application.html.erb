@@ -36,18 +36,16 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
     <![endif]-->
   </head>
-  <body>
+  <body ng-app="Pintube">
     <div id="wrapper">
       <!-- Sidebar -->
-      <div id="sidebar-wrapper">
+      <div id="sidebar-wrapper" ng-controller="BoardsController" ng-init="getBoards()">
         <ul class="sidebar-nav">
           <li class="sidebar-brand"><%= link_to "Pintube", root_path %></li>
-          <li><a href="#">Dogs</a></li>
-          <li><a href="#">Cats</a></li>
-          <li><a href="#">Bollywood</a></li>
-          <li><a href="#">Scifi</a></li>
-          <li><a href="#">Movie Trailers - 2016</a></li>
-          <li><a href="#">Documentaries</a></li>
+          <li class="sidebar-brand"><%= link_to "Boards", "#" %></li>
+          <li class="sidebar" ng-repeat="board in boards">
+            <a href="#">{{ board.name }}</a>
+          </li>
         </ul>
       </div>
       <!-- Side bar end -->
@@ -56,8 +54,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-lg-12">
-              <h1>Simple Sidebar</h1>
-              <p>Lorem ipsum yada yada boo bah humpf ugh damn!</p>
+              <%= yield %>
             </div>
           </div>
         </div>

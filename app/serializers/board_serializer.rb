@@ -1,5 +1,5 @@
 class BoardSerializer < ActiveModel::Serializer
   attributes :id, :name, :description
 
-  has_many :videos, through: :board_videos
+  has_many :videos
 end
