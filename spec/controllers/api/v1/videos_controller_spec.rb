@@ -8,7 +8,7 @@ describe Api::V1::VideosController do
     end
 
     it 'returns the video information in JSON format' do
-      expect(json_response[:title]).to eql @video.title
+      expect(json_response[:video][:title]).to eql @video.title
     end
 
     it { should respond_with 200 }

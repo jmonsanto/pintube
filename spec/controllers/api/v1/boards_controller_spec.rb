@@ -9,7 +9,7 @@ describe Api::V1::BoardsController do
     end
 
     it 'returns the information of a specific board on a hash' do
-      board_response = json_response
+      board_response = json_response[:board]
       expect(board_response[:name]).to eql @board.name
     end
 
@@ -24,7 +24,7 @@ describe Api::V1::BoardsController do
       end
 
       it 'returns the JSON representation of the newly created board' do
-        board_response = json_response
+        board_response = json_response[:board]
         expect(board_response[:name]).to eql @board_attributes[:name]
       end
 
@@ -60,7 +60,7 @@ describe Api::V1::BoardsController do
       end
 
       it 'returns the JSON representation of the updated board' do
-        board_response = json_response
+        board_response = json_response[:board]
         expect(board_response[:name]).to eql 'Psychedelic Madness'
       end
 
